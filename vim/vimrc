@@ -26,6 +26,9 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'junegunn/vim-easy-align'
+Plugin 'vimwiki/vimwiki'
+
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 
@@ -68,6 +71,29 @@ set relativenumber
 set cc=80
 set nu
 
+" " " and then the opposite
+nnoremap & 1
+nnoremap é 2
+nnoremap " 3
+nnoremap ' 4
+nnoremap ( 5
+nnoremap - 6
+nnoremap è 7
+nnoremap _ 8
+nnoremap ç 9
+nnoremap à 0
+" map each number to its shift-key character
+nnoremap 1 &
+nnoremap 2 é
+nnoremap 3 "
+nnoremap 4 '
+nnoremap 5 (
+nnoremap 6 -
+nnoremap 7 è
+nnoremap 8 _
+nnoremap 9 ç
+nnoremap 0 à
+"
 "------------------------------------------------------------
 " Indentation
 "------------------------------------------------------------
@@ -83,10 +109,10 @@ autocmd Filetype tex setlocal ts=2 sts=2 sw=2 expandtab
 autocmd Filetype js setlocal ts=2 sts=2 sw=2 expandtab
 autocmd Filetype css setlocal ts=2 sts=2 sw=2 expandtab
 
-au BufNewFile,BufRead *.js *.html *.css *.tex
-    set tabstop=2
-    set softtabstop=2
-    set shiftwidth=2
+" au BufNewFile,BufRead *.js *.html *.css *.tex
+"     set tabstop=2
+"     set softtabstop=2
+"     set shiftwidth=2
 
 
 au BufNewFile,BufRead *.tex

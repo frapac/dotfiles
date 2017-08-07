@@ -2,11 +2,14 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 export LD_LIBRARY_PATH="/opt/ibm/ILOG/CPLEX_Studio125/cplex/bin/x86-64_sles10_4.1":$LD_LIBRARY_PATH
-export GUROBI_HOME="/opt/gurobi650/linux64"
+export GUROBI_HOME="/opt/gurobi702/linux64"
 export PATH="${PATH}:${GUROBI_HOME}/bin"
 export PATH="${PATH}:/home/fpacaud/bin"
 export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
 export GRB_LICENSE_FILE="/home/fpacaud/gurobi.lic"
+export TITAN='pacaudf@titan.enpc.fr:~'
+export BDG="/home/${USER}/Dev/Buildings.jl"
+export TWD="/home/${USER}/Documents/RENDU"
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -97,31 +100,14 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-alias cdd='cd ~/Dev'
-alias cds='cd ~/Documents/chp'
-alias cdg='cd ~/.julia/v0.5/StochDynamicProgramming'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias jpn='jupyter notebook'
-alias psi='ps aux --sort=-pmem | head'
-alias python='python3'
-alias pip='pip3'
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f ~/.bash_profile ]; then
+    source ~/.bash_profile
 fi
 
 # enable programmable completion features (you don't need to enable

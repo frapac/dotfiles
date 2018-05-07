@@ -1,43 +1,34 @@
 set nocompatible              " required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
 
-call vundle#begin()
-
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'valloric/YouCompleteMe'
-Plugin 'supertab'
-" Plugin 'davidhalter/jedi-vim'
-Plugin 'JuliaLang/julia-vim'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'tpope/vim-commentary'
-Plugin 'kien/ctrlp.vim'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'vim-airline/vim-airline'
-Plugin 'lervag/vimtex'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'junegunn/vim-easy-align'
-Plugin 'vimwiki/vimwiki'
+call plug#begin('~/.vim/plugged')
 
 
-" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
+Plug 'JuliaLang/julia-vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-commentary'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'flazz/vim-colorschemes'
+Plug 'vim-airline/vim-airline'
+Plug 'lervag/vimtex'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/goyo.vim'
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'mileszs/ack.vim'
+Plug 'ervandew/supertab'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+" All of your Plugins must be added before the following line
+call plug#end()            " required
+filetype plugin indent on    " required
 
 if has('gui_running')
   set guioptions-=T  " no toolbar
 endif
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
 
 let mapleader = "\<Space>"
 
@@ -47,7 +38,9 @@ set pastetoggle=<F2>
 "------------------------------------------------------------
 " Colorscheme
 "------------------------------------------------------------
-colorscheme kalahari
+" colorscheme kalahari
+set background=dark
+colorscheme gruvbox
 set t_Co=256
 syntax on
 
@@ -63,6 +56,7 @@ nnoremap <C-O> o<esc>
 nnoremap ss i<Space><esc>
 imap jj <esc>
 nnoremap <F5> :buffers<CR>:buffer<Space>
+nnoremap <F4> :setlocal spell! spelllang=en_us<CR>
 
 
 set encoding=utf-8
@@ -95,6 +89,9 @@ nnoremap 7 è
 nnoremap 8 _
 nnoremap 9 ç
 nnoremap 0 à
+
+
+set wildignore+=*.pdf,*.aux,*.dvi,*.out,*.mtc*,*.jld
 "
 "------------------------------------------------------------
 " Indentation
@@ -120,7 +117,7 @@ autocmd Filetype css setlocal ts=2 sts=2 sw=2 expandtab
 au BufNewFile,BufRead *.tex
     nnoremap <leader>bf i\begin{frame}{}<esc>o\end{frame}<esc>O
     nnoremap <leader>bi i\begin{itemize}<esc>o\end{itemize}<esc>O\item<space>
-    nnoremap <leader>bn i\begin{figure}<esc>o\includegraphics[width=5cm]{}<esc>o\end{figure}<esc>kt}a
+    nnoremap <leader>bn i\begin{figure}[!h]<esc>o\centering<esc>o\includegraphics[width=5cm]{}<esc>o\end{figure}<esc>kt}a
     nnoremap <leader>bc i\begin{center}<esc>o\end{center}<esc>O
     nnoremap <leader>be i\begin{equation*}<esc>o\end{equation*}<esc>O
     nnoremap <leader>bs i\begin{columns}<esc>2o\column{.5\textwidth}<esc>o\end{columns}<esc>
@@ -129,10 +126,10 @@ autocmd BufWritePre *.* :%s/\s\+$//e
 
 
 "------------------------------------------------------------
-" YouCompleteMe Configuration
+" CtrlP Configuration
 "------------------------------------------------------------
-let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlPBuffer'
 
 "------------------------------------------------------------
 " UltiSnips Configuration
@@ -150,3 +147,15 @@ let g:vimtex_view_general_view="zathura"
 " EasyAlign Configuration
 "------------------------------------------------------------
 xmap ga <Plug>(EasyAlign)
+
+"------------------------------------------------------------
+" Ack configuration
+"------------------------------------------------------------
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+"------------------------------------------------------------
+" Deoplete configuration
+"------------------------------------------------------------
+let g:deoplete#enable_at_startup = 1

@@ -122,3 +122,5 @@ if ! shopt -oq posix; then
 fi
 
 MYVIMRC="~/.vimrc"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

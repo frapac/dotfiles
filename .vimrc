@@ -19,7 +19,7 @@ Plug 'Shougo/deoplete.nvim'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'mileszs/ack.vim'
-Plug 'ervandew/supertab'
+"Plug 'ervandew/supertab'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 " All of your Plugins must be added before the following line
@@ -134,9 +134,9 @@ let g:ctrlp_cmd = 'CtrlPBuffer'
 "------------------------------------------------------------
 " UltiSnips Configuration
 "------------------------------------------------------------
-let g:UltiSnipsExpandTrigger="<c-Space>"
-let g:UltiSnipsJumpForwardTrigger="<c-Space>"
-let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 "------------------------------------------------------------
 " VimTex Configuration

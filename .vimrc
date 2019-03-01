@@ -3,15 +3,13 @@ filetype off                  " required
 
 
 call plug#begin('~/.vim/plugged')
-
-
 Plug 'JuliaLang/julia-vim'
+Plug 'w0rp/ale'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-commentary'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'vim-airline/vim-airline'
-Plug 'lervag/vimtex'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/goyo.vim'
@@ -19,10 +17,9 @@ Plug 'Shougo/deoplete.nvim'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'mileszs/ack.vim'
-"Plug 'ervandew/supertab'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-" All of your Plugins must be added before the following line
+Plug 'tpope/vim-dispatch'
 call plug#end()            " required
 filetype plugin indent on    " required
 
@@ -38,7 +35,6 @@ set pastetoggle=<F2>
 "------------------------------------------------------------
 " Colorscheme
 "------------------------------------------------------------
-" colorscheme kalahari
 set background=dark
 colorscheme gruvbox
 set t_Co=256
@@ -63,7 +59,6 @@ set encoding=utf-8
 filetype plugin indent on
 
 set number
-set relativenumber
 set cc=80
 set nu
 
@@ -113,14 +108,6 @@ autocmd Filetype css setlocal ts=2 sts=2 sw=2 expandtab
 "     set softtabstop=2
 "     set shiftwidth=2
 
-
-au BufNewFile,BufRead *.tex
-    nnoremap <leader>bf i\begin{frame}{}<esc>o\end{frame}<esc>O
-    nnoremap <leader>bi i\begin{itemize}<esc>o\end{itemize}<esc>O\item<space>
-    nnoremap <leader>bn i\begin{figure}[!h]<esc>o\centering<esc>o\includegraphics[width=5cm]{}<esc>o\end{figure}<esc>kt}a
-    nnoremap <leader>bc i\begin{center}<esc>o\end{center}<esc>O
-    nnoremap <leader>be i\begin{equation*}<esc>o\end{equation*}<esc>O
-    nnoremap <leader>bs i\begin{columns}<esc>2o\column{.5\textwidth}<esc>o\end{columns}<esc>
 
 autocmd BufWritePre *.* :%s/\s\+$//e
 

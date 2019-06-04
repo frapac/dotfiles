@@ -14,13 +14,14 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/goyo.vim'
 Plug 'Shougo/deoplete.nvim'
+" Plug 'neoclide/coc.nvim'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'mileszs/ack.vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'tpope/vim-dispatch'
-call plug#end()            " required
+" Plug 'tpope/vim-dispatch'
+call plug#end()              " required
 filetype plugin indent on    " required
 
 if has('gui_running')
@@ -31,6 +32,10 @@ let mapleader = "\<Space>"
 
 set laststatus=2
 set pastetoggle=<F2>
+
+" No annoying swap files.
+set noswapfile
+set lazyredraw
 
 "------------------------------------------------------------
 " Colorscheme
@@ -51,9 +56,10 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <C-O> o<esc>
 nnoremap ss i<Space><esc>
 imap jj <esc>
-nnoremap <F5> :buffers<CR>:buffer<Space>
 nnoremap <F4> :setlocal spell! spelllang=en_us<CR>
+nnoremap <F5> :buffers<CR>:buffer<Space>
 
+nnoremap <leader>e :exe getline(line('.'))<cr>
 
 set encoding=utf-8
 filetype plugin indent on
@@ -62,7 +68,7 @@ set number
 set cc=80
 set nu
 
-" " " and then the opposite
+" map each number to its shift-key character
 nnoremap & 1
 nnoremap é 2
 nnoremap " 3
@@ -73,7 +79,7 @@ nnoremap è 7
 nnoremap _ 8
 nnoremap ç 9
 nnoremap à 0
-" map each number to its shift-key character
+" and then the opposite
 nnoremap 1 &
 nnoremap 2 é
 nnoremap 3 "
@@ -86,7 +92,7 @@ nnoremap 9 ç
 nnoremap 0 à
 
 
-set wildignore+=*.pdf,*.aux,*.dvi,*.out,*.mtc*,*.jld
+set wildignore+=*.pdf,*.aux,*.dvi,*.out,*.mtc*,*.jld,*.pyc
 "
 "------------------------------------------------------------
 " Indentation
@@ -109,6 +115,7 @@ autocmd Filetype css setlocal ts=2 sts=2 sw=2 expandtab
 "     set shiftwidth=2
 
 
+" Remove trailing whitespace while saving.
 autocmd BufWritePre *.* :%s/\s\+$//e
 
 

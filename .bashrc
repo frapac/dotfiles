@@ -1,15 +1,7 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
-export LD_LIBRARY_PATH="/opt/ibm/ILOG/CPLEX_Studio125/cplex/bin/x86-64_sles10_4.1":$LD_LIBRARY_PATH
-export GUROBI_HOME="/opt/gurobi702/linux64"
-export PATH="${PATH}:${GUROBI_HOME}/bin"
-export PATH="${PATH}:/home/fpacaud/bin"
-export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
-export GRB_LICENSE_FILE="/home/fpacaud/gurobi.lic"
-export TITAN='pacaudf@titan.enpc.fr:~'
-export BDG="/home/${USER}/Dev/Buildings.jl"
-export TWD="/home/${USER}/Documents/RENDU"
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -18,13 +10,13 @@ esac
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
-HISTCONTROL=ignoreboth
+HISTCONTROL=ignoreboth:erasedups
 
 # append to the history file, don't overwrite it
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
+HISTSIZE=10000
 HISTFILESIZE=2000
 
 # check the window size after each command and, if necessary,
@@ -109,6 +101,9 @@ fi
 if [ -f ~/.bash_profile ]; then
     source ~/.bash_profile
 fi
+if [ -f ~/.bash_aliases ]; then
+    source ~/.bash_aliases
+fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -120,6 +115,8 @@ if ! shopt -oq posix; then
         . /etc/bash_completion
     fi
 fi
+
+psi(){ps aux --sort '%mem'  | tail -n 10 | awk '{printf "%-10s %s\n",$4, $11}' | sort -r;}
 
 MYVIMRC="~/.vimrc"
 
